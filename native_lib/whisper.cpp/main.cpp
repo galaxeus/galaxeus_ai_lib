@@ -8,7 +8,7 @@
 #include <cstdio>
 #include <string>
 #include <thread>
-#include <vector> 
+#include <vector>
 #include <iostream>
 #include "../json/json.hpp"
 
@@ -17,6 +17,7 @@ using json = nlohmann::json;
 extern "C" void print(std::string value)
 {
     std::cout << value << std::endl;
+    //std::cout << std::to_string(value) << std::endl;
 }
 
 extern "C" char *jsonToChar(json jsonData)
@@ -78,9 +79,8 @@ void whisper_print_usage(int argc, char **argv, const whisper_params &params)
 }
 
 extern "C" json transcribe(json jsonBody)
-{
-    whisper_params params;
-
+{ 
+    whisper_params params; 
     params.n_threads = jsonBody["threads"];
     params.verbose = jsonBody["is_verbose"];
     params.translate = jsonBody["is_translate"];
