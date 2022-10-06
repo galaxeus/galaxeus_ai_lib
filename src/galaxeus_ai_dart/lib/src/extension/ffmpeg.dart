@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 part of galaxeus_ai_dart;
 
 extension ConvertAudioToWavWhisper on FFmpeg {
@@ -10,6 +12,7 @@ extension ConvertAudioToWavWhisper on FFmpeg {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
+    
   }) {
     File input_audio_file = File(pathAudioInput);
     if (!input_audio_file.existsSync()) {
@@ -37,8 +40,6 @@ extension ConvertAudioToWavWhisper on FFmpeg {
     );
     if (res.special_type == "ok") {
       return true;
-    } else {
-      print(res.toJson());
     }
     return false;
   }
