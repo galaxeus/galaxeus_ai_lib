@@ -8,7 +8,7 @@
 #include <cstdio>
 #include <string>
 #include <thread>
-#include <vector> 
+#include <vector>
 #include <iostream>
 #include "json.hpp"
 
