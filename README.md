@@ -18,29 +18,37 @@ Developer Resmi
 > jika anda ingin mengintegrasikan library ini anda bisa komunikasi terlebih dahulu kepada developer resmi, biaya tergantung developer
 
 ## Feature
+Daftar feature yang ada di library ini + sumber belajar
 
 1. Chatbot ( selesai tapi belum di publish )
-    > chatbot ai pada di group
+    > chatbot ai pada di group 
     - private 
     - group
 2. Speech To Text ( selesai )
     > hasilkan text dari sebuah audio secara offline
+    - [sumber-belajar](https://github.com/ggerganov/whisper.cpp)
     - offline without any api key require hanya bisa berjalan di cpu
 3. QrCode ( akan datang )
     > hasilkan gambar qr code / membaca qr code secara offline
     - membaca qr code dan membuat qr
-4. Text to Speech ( akan datang )
+4. Text to Speech ( akan datang sangat lama )
     > hasilkan suara dari text
 5. audio ( segera hadir )
     > memainkan audio pada semua platform dengan mudah
-6. video ( akan datang )
+    - [sumber-belajar](https://miniaud.io/)
+6. video ( akan datang sangat lama )
 7. handle account social media
    > handle banyak account socmed dengan api yang sudah legal
    1. Galaxeus
-   2. Telegram (segera hadir)
-   3. Github (segera hadir)
+      - [Sumber-Belajar]() 
+   2. Telegram (akan hadir)
+      - [Sumber-Belajar](https://core.telegram.org/tdlib/docs) 
+   3. Github (akan hadir)
+      - [Sumber-Belajar]() 
    4. Whatsapp
+      - [Sumber-Belajar]() 
    5. Twitter
+      - [Sumber-Belajar](https://developer.twitter.com/en) 
 
 ## Bahasa code
 Bahasa yang di support secara official hanya bahasa dart dan akan menggunakan bahasa carbon lang jika sudah release stable
