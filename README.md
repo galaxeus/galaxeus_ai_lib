@@ -14,6 +14,9 @@ Social Media Kami
 Developer Resmi
 1. [Azkadev](https://github.com/azkadev)
 
+## Note
+> jika anda ingin mengintegrasikan library ini anda bisa komunikasi terlebih dahulu kepada developer resmi, biaya tergantung developer
+
 ## Feature
 
 1. Chatbot ( sedang di kerjakan )
