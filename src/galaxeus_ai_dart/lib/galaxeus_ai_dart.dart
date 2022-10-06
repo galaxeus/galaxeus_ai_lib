@@ -12,9 +12,13 @@ import 'package:universal_io/io.dart';
 import 'package:galaxeus_lib/galaxeus_lib.dart';
 
 import 'package:ffi/ffi.dart';
+import 'package:zxing2/qrcode.dart';
+import 'package:image/image.dart' as img;
+
 part 'src/scheme/galaxeus_ai_native_response.dart';
 part 'src/scheme/galaxeus_ai_native_request.dart';
 
+part 'src/image/qrcode.dart';
 part 'src/type_data/chatbot.dart';
 part 'src/scheme/galaxeus_ai_memory.dart';
 part 'src/scheme/galaxeus_ai/galaxeus_ai_person.dart';

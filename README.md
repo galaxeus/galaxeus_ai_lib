@@ -28,7 +28,7 @@ Daftar feature yang ada di library ini + sumber belajar
     > hasilkan text dari sebuah audio secara offline
     - [sumber-belajar](https://github.com/ggerganov/whisper.cpp)
     - offline without any api key require hanya bisa berjalan di cpu
-3. QrCode ( akan datang )
+3. QrCode ( selesai )
     > hasilkan gambar qr code / membaca qr code secara offline
     - membaca qr code dan membuat qr
 4. Text to Speech ( akan datang sangat lama )
@@ -75,3 +75,7 @@ berhubungan dengan system os maka akan kami tambahkan ke dalam native_lib
 > Q: Mengapa sedikit resource pembelajaran?
 
 > A: Karena Kami tidak ada audience banyak dan kami tidak ada waktu banyak untuk mengshare ini, tetapi kami akan menaruh contoh code pada folder example di library
+
+> Q: Kenapa ada banyak library? apa itu tidak berat? kenapa tidak bikin sendiri?
+
+> A: Karena kami akan menjadikan ini sebagai library all in one, tidak akan memberatkan sistem ini hanya akan memberatkan sedikit ram dan penyimpanan, itu perlu waktu yang agak lama jadi kami memakai library yang ada mereka jika belum maka kami akan membuat sendiri
