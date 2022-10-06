@@ -4,6 +4,15 @@ class GalaxeusAiRequest {
   late Map rawData;
   GalaxeusAiRequest(this.rawData);
 
+  factory GalaxeusAiRequest.translate({
+    required GalaxeusAiPerson fromPerson,
+    required GalaxeusAiPerson toPerson
+  }) {
+    return GalaxeusAiRequest({
+      "@type": GalaxeusAiChatbotType.group.name,
+    });
+  }
+
   factory GalaxeusAiRequest.chatbot({
     required GalaxeusAiPerson fromPerson,
     required GalaxeusAiPerson toPerson
