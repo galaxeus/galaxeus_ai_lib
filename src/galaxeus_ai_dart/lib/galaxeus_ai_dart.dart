@@ -9,7 +9,8 @@ import 'package:ffmpeg_dart/ffmpeg_dart.dart';
 import 'package:universal_io/io.dart';
 
 import 'package:ffi/ffi.dart';
-
+part 'src/scheme/galaxeus_ai_native_response.dart';
+part 'src/scheme/galaxeus_ai_native_request.dart';
 part 'src/audio/convert.dart';
 part 'src/extension/ffmpeg.dart';
 part 'src/galaxeus_ai_native.dart';
