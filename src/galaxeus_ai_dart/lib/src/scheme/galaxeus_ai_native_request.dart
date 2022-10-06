@@ -4,7 +4,7 @@ class GalaxeusAiNativeRequest {
   late Map rawData;
   GalaxeusAiNativeRequest(this.rawData);
 
-  factory GalaxeusAiNativeRequest.fromWavFile({
+  factory GalaxeusAiNativeRequest.speechToTextFromWavFile({
     required File audio,
     required File model,
     bool is_translate = false,
