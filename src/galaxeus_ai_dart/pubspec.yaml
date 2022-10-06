@@ -17,3 +17,4 @@ dependencies:
   ffmpeg_dart: ^0.0.0
   galaxeus_lib: ^0.0.8
   universal_io: ^2.0.4
+  zxing2: ^0.1.1

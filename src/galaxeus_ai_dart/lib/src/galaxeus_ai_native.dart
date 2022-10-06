@@ -7,7 +7,12 @@ typedef whisper_request_native = Pointer<Utf8> Function(Pointer<Utf8> body);
 
 class GalaxeusAiNative {
   late String galaxeus_ai_lib = "galaxeus_ai.so";
-  GalaxeusAiNative({String? galaxeusAiLib}) {
+  late GalaxeusAiMemory galaxeusAiMemory;
+
+  GalaxeusAiNative({
+    String? galaxeusAiLib,
+    required this.galaxeusAiMemory,
+  }) {
     if (galaxeusAiLib != null) {
       galaxeus_ai_lib = galaxeusAiLib;
     }
@@ -22,13 +27,10 @@ class GalaxeusAiNative {
 
   GalaxeusAiNativeResponse request({
     required GalaxeusAiNativeRequest galaxeusAiNativeRequest,
-  }) {
+  }) { 
     try {
-      var res = openLib
-          .lookupFunction<whisper_request_native, whisper_request_native>(
-              "request")
-          .call(galaxeusAiNativeRequest.toString().toNativeUtf8());
-      Map result = json.decode(res.toDartString());
+      var res = openLib.lookupFunction<whisper_request_native, whisper_request_native>("request").call(galaxeusAiNativeRequest.toString().toNativeUtf8());
+      Map result = json.decode(res.toDartString()); 
       return GalaxeusAiNativeResponse(result);
     } catch (e) {
       return GalaxeusAiNativeResponse({"@type": "error"});

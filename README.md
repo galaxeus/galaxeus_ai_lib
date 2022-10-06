@@ -16,3 +16,6 @@ all in one open source library artificial intelligence untuk semua orang
 5. Memainkan audio ( akan datang )
 6. Memainkan video ( akan datang )
 7. Menghandle banyak account social media
+
+## Bahasa code
+Bahasa yang di support secara official hanya bahasa dart
