@@ -24,7 +24,10 @@ class GalaxeusAiNative {
     required GalaxeusAiNativeRequest galaxeusAiNativeRequest,
   }) {
     try {
-      var res = openLib.lookupFunction<whisper_request_native, whisper_request_native>("request").call(galaxeusAiNativeRequest.toString().toNativeUtf8());
+      var res = openLib
+          .lookupFunction<whisper_request_native, whisper_request_native>(
+              "request")
+          .call(galaxeusAiNativeRequest.toString().toNativeUtf8());
       Map result = json.decode(res.toDartString());
       return GalaxeusAiNativeResponse(result);
     } catch (e) {

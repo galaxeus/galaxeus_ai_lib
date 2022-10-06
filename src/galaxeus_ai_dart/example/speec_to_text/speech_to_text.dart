@@ -2,7 +2,9 @@ import 'package:galaxeus_ai_dart/galaxeus_ai_dart.dart';
 import 'package:universal_io/io.dart';
 
 void main(List<String> args) {
-  GalaxeusAiNative galaxeusAiNative = GalaxeusAiNative(galaxeusAiLib: "/home/hexaminate/Documents/HEXAMINATE/app/ai/galaxeus_ai/native_lib/galaxeus.so");
+  GalaxeusAiNative galaxeusAiNative = GalaxeusAiNative(
+      galaxeusAiLib:
+          "/home/hexaminate/Documents/HEXAMINATE/app/ai/galaxeus_ai/native_lib/galaxeus.so");
 
   GalaxeusAiNativeResponse res = galaxeusAiNative.request(
     galaxeusAiNativeRequest: GalaxeusAiNativeRequest.speechToTextFromWavFile(

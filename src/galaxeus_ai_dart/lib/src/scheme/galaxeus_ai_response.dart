@@ -1,8 +1,8 @@
 part of galaxeus_ai_dart;
 
-class GalaxeusAiNativeResponse {
+class GalaxeusAiResponse {
   late Map rawData;
-  GalaxeusAiNativeResponse(this.rawData);
+  GalaxeusAiResponse(this.rawData);
 
   String? get special_type {
     try {

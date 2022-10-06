@@ -18,7 +18,14 @@ class GalaxeusAiAudioConvert {
   }) {
     timeout ??= Duration(seconds: 10);
     DateTime time_expire = DateTime.now().add(timeout);
-    var res = FFmpeg(pathFFmpeg: pathFFmpeg).convertAudioToWavWhisper(pathAudioInput: audioInput.path, pathAudioOutput: audioOutput.path, pathFFmpeg: pathFFmpeg, fFmpegArgs: fFmpegArgs, workingDirectory: workingDirectory, environment: environment, runInShell: runInShell);
+    var res = FFmpeg(pathFFmpeg: pathFFmpeg).convertAudioToWavWhisper(
+        pathAudioInput: audioInput.path,
+        pathAudioOutput: audioOutput.path,
+        pathFFmpeg: pathFFmpeg,
+        fFmpegArgs: fFmpegArgs,
+        workingDirectory: workingDirectory,
+        environment: environment,
+        runInShell: runInShell);
     while (true) {
       if (DateTime.now().isAfter(time_expire)) {
         throw "time out";
@@ -48,7 +55,14 @@ class GalaxeusAiAudioConvert {
   }) {
     timeout ??= Duration(seconds: 10);
     DateTime time_expire = DateTime.now().add(timeout);
-    var res = FFmpeg(pathFFmpeg: pathFFmpeg).convertAudioToWavWhisper(pathAudioInput: audioInput.path, pathAudioOutput: audioOutput.path, pathFFmpeg: pathFFmpeg, fFmpegArgs: fFmpegArgs, workingDirectory: workingDirectory, environment: environment, runInShell: runInShell);
+    var res = FFmpeg(pathFFmpeg: pathFFmpeg).convertAudioToWavWhisper(
+        pathAudioInput: audioInput.path,
+        pathAudioOutput: audioOutput.path,
+        pathFFmpeg: pathFFmpeg,
+        fFmpegArgs: fFmpegArgs,
+        workingDirectory: workingDirectory,
+        environment: environment,
+        runInShell: runInShell);
     while (true) {
       if (DateTime.now().isAfter(time_expire)) {
         throw "time out";
@@ -64,5 +78,4 @@ class GalaxeusAiAudioConvert {
       }
     }
   }
-
 }

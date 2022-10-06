@@ -12,7 +12,6 @@ extension ConvertAudioToWavWhisper on FFmpeg {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
-    
   }) {
     File input_audio_file = File(pathAudioInput);
     if (!input_audio_file.existsSync()) {

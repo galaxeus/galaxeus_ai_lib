@@ -3,10 +3,10 @@ part of galaxeus_ai_dart;
 class GalaxeusAi {
   GalaxeusAi();
 
-  request() {
-
+  GalaxeusAiResponse request({
+    required GalaxeusAiRequest galaxeusAiRequest,
+  }) {
+    return GalaxeusAiResponse({
+    });
   }
-
-  
-
 }
