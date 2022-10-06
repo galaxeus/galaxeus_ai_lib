@@ -43,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.0"
+  barcode:
+    dependency: transitive
+    description:
+      name: barcode
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -246,6 +253,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
+  pdf:
+    dependency: "direct main"
+    description:
+      name: pdf
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.8.3"
   petitparser:
     dependency: transitive
     description:
@@ -274,6 +295,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  qr:
+    dependency: transitive
+    description:
+      name: qr
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   shelf:
     dependency: transitive
     description:
@@ -393,6 +421,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.4"
+  vector_math:
+    dependency: transitive
+    description:
+      name: vector_math
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.4"
   vm_service:
     dependency: transitive
     description:

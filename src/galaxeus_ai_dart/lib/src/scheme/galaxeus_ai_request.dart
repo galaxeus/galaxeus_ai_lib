@@ -31,6 +31,10 @@ class GalaxeusAiRequest {
     });
   }
 
+  String? get special_type  {
+
+  }
+
 
   Map toMap() {
     return (rawData);
