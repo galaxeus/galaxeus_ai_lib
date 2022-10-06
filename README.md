@@ -19,18 +19,30 @@ Developer Resmi
 
 ## Feature
 
-1. Chatbot ( sedang di kerjakan )
-    - private
+1. Chatbot ( selesai tapi belum di publish )
+    - private 
     - group
-    - 
 2. Speech To Text ( selesai )
     - offline without any api key require hanya bisa berjalan di cpu
 3. QrCode ( akan datang )
     - membaca qr code dan membuat qr
 4. Text to Speech ( akan datang )
-5. Memainkan audio ( akan datang )
+5. Memainkan audio ( segera hadir )
 6. Memainkan video ( akan datang )
-7. Menghandle banyak account social media
+7. handle account social media
+   > handle banyak account socmed dengan api yang sudah legal dan gratis
+   1. Galaxeus
+   2. Telegram ()
+   3. Github ()
+   4. Whatsapp
+   5. Twitter
 
 ## Bahasa code
-Bahasa yang di support secara official hanya bahasa dart
+Bahasa yang di support secara official hanya bahasa dart dan akan menggunakan bahasa carbon lang jika sudah release stable
+
+## Faqs
+
+Q: Mengapa anda membuat library ini?
+A: untuk memudahkan startup / developer lainya agar bisa mengembangkan feature ke dalam project mereka sehingga mereka tidak membuang waktu untuk membuat nya sendiri
+Q: Bahasa apa saja yang akan bisa menggunakan library ini?
+A: Hanya bahasa dart untuk bahasa lain kami tidak akan menggunakan kecuali jika ada yang berhubungan dengan system os maka akan kami tambahkan ke dalam native_lib
