@@ -10,6 +10,7 @@ import 'package:universal_io/io.dart';
 
 import 'package:ffi/ffi.dart';
 
+part 'src/audio/convert.dart';
 part 'src/extension/ffmpeg.dart';
 part 'src/galaxeus_ai_native.dart';
 part 'src/utils/utils.dart';

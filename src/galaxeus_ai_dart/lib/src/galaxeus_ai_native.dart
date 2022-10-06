@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 part of galaxeus_ai_dart;
 
 // ignore: camel_case_types
@@ -27,78 +29,6 @@ class GalaxeusAiNative {
       return GalaxeusAiNativeResponse(result);
     } catch (e) {
       return GalaxeusAiNativeResponse({"@type": "error"});
-    }
-  }
-}
-
-class Whisper {
-  late String whisper_lib = "whisper.so";
-  Whisper({String? whisperLib}) {
-    if (whisperLib != null) {
-      whisper_lib = whisperLib;
-    }
-  }
-
-  DynamicLibrary get openLib {
-    if (Platform.isIOS || Platform.isMacOS) {
-      return DynamicLibrary.process();
-    } else {
-      return DynamicLibrary.open(whisper_lib);
-    }
-  }
-
-  Map get test {
-    try {
-      var res = openLib.lookupFunction<Pointer<Utf8> Function(), Pointer<Utf8> Function()>("getString").call();
-      var result = json.decode(res.toDartString());
-      return result;
-    } catch (e) {
-      return {"@type": "error"};
-    }
-  }
-
-  GalaxeusAiNativeResponse request({
-    required GalaxeusAiNativeRequest galaxeusAiNativeRequest,
-  }) {
-    try {
-      var res = openLib.lookupFunction<whisper_request_native, whisper_request_native>("request").call(galaxeusAiNativeRequest.toString().toNativeUtf8());
-      Map result = json.decode(res.toDartString());
-      return GalaxeusAiNativeResponse(result);
-    } catch (e) {
-      return GalaxeusAiNativeResponse({"@type": "error"});
-    }
-  }
-}
-
-class GalaxeusAiAudioConvert {
-  GalaxeusAiAudioConvert();
-  static File convert({
-    required File audioInput,
-    required File audioOutput,
-    String? pathFFmpeg,
-    FFmpegArgs? fFmpegArgs,
-    String? workingDirectory,
-    Map<String, String>? environment,
-    bool includeParentEnvironment = true,
-    bool runInShell = false,
-    Duration? timeout,
-  }) {
-    timeout ??= Duration(seconds: 10);
-    DateTime time_expire = DateTime.now().add(timeout);
-    var res = FFmpeg(pathFFmpeg: pathFFmpeg).convertAudioToWavWhisper(pathAudioInput: audioInput.path, pathAudioOutput: audioOutput.path, pathFFmpeg: pathFFmpeg, fFmpegArgs: fFmpegArgs, workingDirectory: workingDirectory, environment: environment, runInShell: runInShell);
-    while (true) {
-      if (DateTime.now().isAfter(time_expire)) {
-        throw "time out";
-      }
-      if (res) {
-        if (audioOutput.existsSync()) {
-          return audioOutput;
-        }
-      } else {
-        if (!audioInput.existsSync()) {
-          throw "audio input not found";
-        }
-      }
     }
   }
 }
@@ -211,4 +141,3 @@ class GalaxeusAiNativeResponse {
     return json.encode(rawData);
   }
 }
- 
