@@ -5,10 +5,23 @@ class GalaxeusAiRequest {
   GalaxeusAiRequest(this.rawData);
 
   factory GalaxeusAiRequest.chatbot({
-    required Map from,
+    required GalaxeusAiPerson fromPerson,
+    required GalaxeusAiPerson toPerson
   }) {
-    return GalaxeusAiRequest({});
+    return GalaxeusAiRequest({
+      "@type": GalaxeusAiChatbotType.group.name,
+    });
   }
+
+  factory GalaxeusAiRequest.chatbotGroup({
+    required GalaxeusAiPerson fromPerson,
+    required GalaxeusAiPerson toPerson
+  }) {
+    return GalaxeusAiRequest({
+      
+    });
+  }
+
 
   Map toMap() {
     return (rawData);

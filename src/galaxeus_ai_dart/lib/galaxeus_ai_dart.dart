@@ -6,11 +6,14 @@ import 'dart:convert';
 import 'dart:ffi';
 import 'package:ffmpeg_dart/ffmpeg_dart.dart';
 import 'package:universal_io/io.dart';
+import 'package:galaxeus_lib/galaxeus_lib.dart';
 
 import 'package:ffi/ffi.dart';
 part 'src/scheme/galaxeus_ai_native_response.dart';
 part 'src/scheme/galaxeus_ai_native_request.dart';
 
+part 'src/type_data/chatbot.dart';
+part 'src/scheme/galaxeus_ai/galaxeus_ai_person.dart';
 part 'src/scheme/galaxeus_ai_response.dart';
 part 'src/scheme/galaxeus_ai_request.dart';
 part 'src/galaxeus_ai.dart';
