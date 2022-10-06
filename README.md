@@ -1,6 +1,18 @@
 # galaxeus_ai
 
-all in one open source library artificial intelligence untuk semua orang
+all in one open source library artificial intelligence untuk semua orang,
+
+> Semua Feature ai yang ada di library ini tidak membutuhkan biaya, internet, api, semua bisa berjalan di cpu only dan bisa di jalankan di gpu
+
+> jika anda menyukai project ini tolong bantu kami ya, dengan cara donate / follow semua akun social media kami terimakasih
+
+Social Media Kami
+1. [App-Resmi]()
+2. [Youtube](https://youtube.com/c/galaxeus)
+3. [Telegram](https://t.me/galaxeusbot)
+
+Developer Resmi
+1. [Azkadev](https://github.com/azkadev)
 
 ## Feature
 

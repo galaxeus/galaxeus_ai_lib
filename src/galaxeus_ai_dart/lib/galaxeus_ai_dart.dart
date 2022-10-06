@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 library galaxeus_ai_dart;
 
 // ignore_for_file: non_constant_identifier_names
