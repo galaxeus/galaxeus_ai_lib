@@ -33,7 +33,7 @@ Daftar feature yang ada di library ini + sumber belajar
     - membaca qr code dan membuat qr
 4. Text to Speech ( akan datang sangat lama )
     > hasilkan suara dari text
-5. audio ( segera hadir )
+5. audio ( selesai )
     > memainkan audio pada semua platform dengan mudah
     - [sumber-belajar](https://miniaud.io/)
 6. video ( akan datang sangat lama )

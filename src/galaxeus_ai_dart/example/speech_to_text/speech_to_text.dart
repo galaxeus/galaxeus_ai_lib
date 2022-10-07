@@ -17,11 +17,11 @@ void main(List<String> args) {
     galaxeusAiNativeRequest: GalaxeusAiNativeRequest.speechToTextFromWavFile(
       threads: 8,
       // auto convert to wav
-      audio: GalaxeusAiAudioConvert.convertToWav16BitSync(
-        audioInput: File("./audio.mp3"),
-        audioOutput: File("../../native_lib/samples/output_res.wav"),
-      ),
-      // audio: File("../../native_lib/samples/output_res.wav"),
+      // audio: GalaxeusAiAudioConvert.convertToWav16BitSync(
+      //   audioInput: File("./audio.mp3"),
+      //   audioOutput: File("../../native_lib/samples/output_res.wav"),
+      // ),
+      audio: File("../../native_lib/samples/output_res.wav"),
       model: File("../../native_lib/models/ggml-model-whisper-small.bin"),
     ),
   );

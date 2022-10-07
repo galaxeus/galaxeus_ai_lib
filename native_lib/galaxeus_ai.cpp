@@ -1,16 +1,20 @@
-#include "whisper.h"
+#include "whisper.cpp/whisper.h"
 
 // third-party utilities
 // use your favorite implementations
 #define DR_WAV_IMPLEMENTATION
-#include "dr_wav.h"
+#include "whisper.cpp/dr_wav.h"
 
 #include <cstdio>
 #include <string>
 #include <thread>
 #include <vector>
 #include <iostream>
-#include "json.hpp"
+#include "json/json.hpp"
+
+#define MINIAUDIO_IMPLEMENTATION
+#include "miniaudio/miniaudio.h"
+#include <stdio.h>
 
 using json = nlohmann::json;
 
@@ -24,6 +28,20 @@ extern "C" char *jsonToChar(json jsonData)
     std::string result = jsonData.dump();
     char *ch = new char[result.size() + 1];
     strcpy(ch, result.c_str());
+    return ch;
+}
+
+extern "C" std::string charToString(char *value)
+{
+    std::string result(value);
+    ;
+    return result;
+}
+
+extern "C" char *stringToChar(std::string value)
+{
+    char *ch = new char[value.size() + 1];
+    strcpy(ch, value.c_str());
     return ch;
 }
 
@@ -239,13 +257,66 @@ extern "C" json transcribe(json jsonBody)
     return jsonResult;
 }
 
+extern "C" json play(json jsonBody)
+{
+    ma_result result;
+    ma_engine engine;
+
+    result = ma_engine_init(NULL, &engine);
+    json jsonResult;
+    jsonResult["@type"] = "transcribe";
+    if (result != MA_SUCCESS)
+    {
+        jsonResult["@type"] = "error";
+        jsonResult["message"] = "Failed to initialize audio engine.";
+        return jsonResult;
+    }
+    ma_sound sound;
+    result = ma_sound_init_from_file(&engine, stringToChar(jsonBody["audio"]), 0, NULL, NULL, &sound);
+    if (result != MA_SUCCESS)
+    {
+        jsonResult["@type"] = "error";
+        jsonResult["message"] = "Failed to load sound file.";
+        return jsonResult;
+    }
+    ma_sound_start(&sound);
+    while (true)
+    {
+        if (ma_sound_at_end(&sound) != 0)
+        {
+            ma_sound_stop(&sound);
+            ma_engine_uninit(&engine);
+            jsonResult["@type"] = "ok";
+            return jsonResult;
+        }
+    }
+    ma_sound_stop(&sound);
+    ma_engine_uninit(&engine);
+    jsonResult["@type"] = "error";
+    jsonResult["message"] = "Failed to load sound file.";
+    return jsonResult;
+}
+
 extern "C" char *request(char *body)
 {
     json jsonBody = json::parse(body);
-    json jsonResult;
+    json jsonResult; 
+
     if (jsonBody["@type"] == "getTextFromWavFile")
     {
         return jsonToChar(transcribe(jsonBody));
+    }
+
+    if (jsonBody["@type"] == "playAudioFromFile")
+    {
+        return jsonToChar(play(jsonBody));
+    }
+
+    if (jsonBody["@type"] == "getVersion")
+    {
+        jsonResult["@type"] = "version";
+        jsonResult["message"] = "version lib v0.0.0";
+        return jsonToChar(jsonResult);
     }
 
     jsonResult["@type"] = "error";

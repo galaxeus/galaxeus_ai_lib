@@ -6,6 +6,22 @@ class GalaxeusAiNativeRequest {
   late Map rawData;
   GalaxeusAiNativeRequest(this.rawData);
 
+  factory GalaxeusAiNativeRequest.getVersion() {
+    return GalaxeusAiNativeRequest({
+      "@type": "getVersion",  
+    });
+  }
+
+  factory GalaxeusAiNativeRequest.playAudioFromFile({
+    required File audio, 
+  }) {
+    return GalaxeusAiNativeRequest({
+      "@type": "playAudioFromFile", 
+      "audio": audio.path, 
+    });
+  }
+
+
   factory GalaxeusAiNativeRequest.speechToTextFromWavFile({
     required File audio,
     required File model,
