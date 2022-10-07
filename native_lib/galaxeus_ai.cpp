@@ -278,7 +278,7 @@ extern "C" json play(json jsonBody)
         jsonResult["@type"] = "error";
         jsonResult["message"] = "Failed to load sound file.";
         return jsonResult;
-    }
+    } ;
     ma_sound_start(&sound);
     while (true)
     {

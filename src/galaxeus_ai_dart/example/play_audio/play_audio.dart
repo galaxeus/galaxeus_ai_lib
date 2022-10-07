@@ -12,14 +12,14 @@ void main(List<String> args) async {
       },
     ),
   );
-  var res = await Future.microtask(() async {
+  Future(() {
     GalaxeusAiNativeResponse res = galaxeusAiNative.request(
       galaxeusAiNativeRequest: GalaxeusAiNativeRequest.playAudioFromFile(
         audio: File("../../native_lib/samples/output_res.wav"),
       ),
-    );
+    ); 
     return res.toJson();
   });
-  print(res);
+
   print("hleo");
 }
