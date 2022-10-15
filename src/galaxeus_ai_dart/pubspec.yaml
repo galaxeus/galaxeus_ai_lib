@@ -1,6 +1,6 @@
 name: galaxeus_ai_dart
-description: A sample command-line application.
-version: 0.0.0
+description: All in one library artificial intelligence in dart support cross platform, support server side and client side.
+version: 0.0.1
 homepage: https://youtube.com/c/galaxeus
 
 environment:
@@ -15,7 +15,7 @@ dev_dependencies:
 dependencies:
   ffi: ^2.0.1
   ffmpeg_dart: ^0.0.0
-  galaxeus_lib: ^0.0.8
+  galaxeus_lib: ^0.0.17
   image: ^3.2.0
   pdf: ^3.8.3
   universal_io: ^2.0.4

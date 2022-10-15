@@ -1,2 +1,3 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+# Galaxeus Ai Dart
+
+All in one library artificial intelligence in dart support cross platform, support server side and client side.
