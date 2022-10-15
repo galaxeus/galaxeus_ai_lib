@@ -8,19 +8,18 @@ class GalaxeusAiNativeRequest {
 
   factory GalaxeusAiNativeRequest.getVersion() {
     return GalaxeusAiNativeRequest({
-      "@type": "getVersion",  
+      "@type": "getVersion",
     });
   }
 
   factory GalaxeusAiNativeRequest.playAudioFromFile({
-    required File audio, 
+    required File audio,
   }) {
     return GalaxeusAiNativeRequest({
-      "@type": "playAudioFromFile", 
-      "audio": audio.path, 
+      "@type": "playAudioFromFile",
+      "audio": audio.path,
     });
   }
-
 
   factory GalaxeusAiNativeRequest.speechToTextFromWavFile({
     required File audio,

@@ -15,7 +15,7 @@ void main(List<String> args) {
 
   GalaxeusAiNativeResponse res = galaxeusAiNative.request(
     galaxeusAiNativeRequest: GalaxeusAiNativeRequest.speechToTextFromWavFile(
-      threads: 8,
+      threads: 2,
       // auto convert to wav
       // audio: GalaxeusAiAudioConvert.convertToWav16BitSync(
       //   audioInput: File("./audio.mp3"),

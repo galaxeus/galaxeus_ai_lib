@@ -17,7 +17,7 @@ void main(List<String> args) async {
       galaxeusAiNativeRequest: GalaxeusAiNativeRequest.playAudioFromFile(
         audio: File("../../native_lib/samples/output_res.wav"),
       ),
-    ); 
+    );
     return res.toJson();
   });
 

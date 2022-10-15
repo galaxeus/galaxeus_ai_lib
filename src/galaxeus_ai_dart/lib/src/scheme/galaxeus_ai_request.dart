@@ -4,37 +4,29 @@ class GalaxeusAiRequest {
   late Map rawData;
   GalaxeusAiRequest(this.rawData);
 
-  factory GalaxeusAiRequest.translate({
-    required GalaxeusAiPerson fromPerson,
-    required GalaxeusAiPerson toPerson
-  }) {
+  factory GalaxeusAiRequest.translate(
+      {required GalaxeusAiPerson fromPerson,
+      required GalaxeusAiPerson toPerson}) {
     return GalaxeusAiRequest({
       "@type": GalaxeusAiChatbotType.group.name,
     });
   }
 
-  factory GalaxeusAiRequest.chatbot({
-    required GalaxeusAiPerson fromPerson,
-    required GalaxeusAiPerson toPerson
-  }) {
+  factory GalaxeusAiRequest.chatbot(
+      {required GalaxeusAiPerson fromPerson,
+      required GalaxeusAiPerson toPerson}) {
     return GalaxeusAiRequest({
       "@type": GalaxeusAiChatbotType.group.name,
     });
   }
 
-  factory GalaxeusAiRequest.chatbotGroup({
-    required GalaxeusAiPerson fromPerson,
-    required GalaxeusAiPerson toPerson
-  }) {
-    return GalaxeusAiRequest({
-      
-    });
+  factory GalaxeusAiRequest.chatbotGroup(
+      {required GalaxeusAiPerson fromPerson,
+      required GalaxeusAiPerson toPerson}) {
+    return GalaxeusAiRequest({});
   }
 
-  String? get special_type  {
-
-  }
-
+  String? get special_type {}
 
   Map toMap() {
     return (rawData);

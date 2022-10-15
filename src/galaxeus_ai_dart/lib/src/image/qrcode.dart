@@ -2,7 +2,8 @@ part of galaxeus_ai_dart;
 
 class GalaxeusQrCode {
   String decode({required img.Image image}) {
-    LuminanceSource source = RGBLuminanceSource(image.width, image.height, image.getBytes(format: img.Format.abgr).buffer.asInt32List());
+    LuminanceSource source = RGBLuminanceSource(image.width, image.height,
+        image.getBytes(format: img.Format.abgr).buffer.asInt32List());
     var bitmap = BinaryBitmap(HybridBinarizer(source));
     var reader = QRCodeReader();
     var result = reader.decode(bitmap);
@@ -33,7 +34,8 @@ class GalaxeusQrCode {
     for (var i = 0; i < xs.length; i++) {
       var x = xs[i][0];
       var y = xs[i][1];
-      img.fillRect(image, x * scale, y * scale, x * scale + scale, y * scale + scale, 0xFF000000);
+      img.fillRect(image, x * scale, y * scale, x * scale + scale,
+          y * scale + scale, 0xFF000000);
     }
     var pngBytes = img.encodePng(image);
     return await File(fileOutPut.path).writeAsBytes(pngBytes);
@@ -60,7 +62,8 @@ class GalaxeusQrCode {
     for (var i = 0; i < xs.length; i++) {
       var x = xs[i][0];
       var y = xs[i][1];
-      img.fillRect(image, x * scale, y * scale, x * scale + scale, y * scale + scale, 0xFF000000);
+      img.fillRect(image, x * scale, y * scale, x * scale + scale,
+          y * scale + scale, 0xFF000000);
     }
     var pngBytes = img.encodePng(image);
 
