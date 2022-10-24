@@ -1,9 +1,11 @@
 import 'package:galaxeus_ai_dart/galaxeus_ai_dart.dart';
+import 'package:galaxeus_lib/galaxeus_lib.dart';
 import 'package:universal_io/io.dart';
 
 void main(List<String> args) {
+  DateTime time = DateTime.now();
   GalaxeusAiNative galaxeusAiNative = GalaxeusAiNative(
-    galaxeusAiLib: "../../native_lib/galaxeus.so",
+    galaxeusAiLib: "../../native_lib/galaxeus_ai.so",
     galaxeusAiMemory: GalaxeusAiMemory(
       onData: (data) async {
         print(data);
@@ -15,10 +17,8 @@ void main(List<String> args) {
 
   GalaxeusAiNativeResponse res = galaxeusAiNative.request(
     galaxeusAiNativeRequest: GalaxeusAiNativeRequest.speechToTextFromWavFile(
-      threads: 2,
-      // auto convert to wav
       // audio: GalaxeusAiAudioConvert.convertToWav16BitSync(
-      //   audioInput: File("./audio.mp3"),
+      //   audioInput: File("../../native_lib/samples/audio.wav"),
       //   audioOutput: File("../../native_lib/samples/output_res.wav"),
       // ),
       audio: File("../../native_lib/samples/output_res.wav"),
@@ -26,4 +26,5 @@ void main(List<String> args) {
     ),
   );
   print(res.toString());
+  print(convertToAgoFromDateTime(time));
 }
