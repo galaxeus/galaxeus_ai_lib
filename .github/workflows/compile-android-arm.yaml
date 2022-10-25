@@ -1,0 +1,40 @@
+name: Build and Release Android arm
+on: [workflow_dispatch]
+jobs:
+  build:
+    name: Build Apps
+    runs-on: macos-latest
+    steps:
+      - name: Export Release Timestamp
+        run: echo "APP_VERSION=v$(date +'%Y.%m.%d.%H.%M.%S')" >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.3.1'
+          channel: 'stable'
+      - name: Open example/galaxeus_ai_flutter
+        run: |
+          cd example/galaxeus_ai_flutter
+          flutter pub get
+          flutter build apk --release --target-platform=android-arm64
+      - name: Publish artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: App
+          path: "example/galaxeus_ai_flutter/build/app/outputs/apk/release/*.apk"
+      - name: Publish Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.TOKEN_GITHUB }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Development Build"
+          files: |
+            example/galaxeus_ai_flutter/galaxeus_ai_flutter/build/app/outputs/apk/release/*.apk
