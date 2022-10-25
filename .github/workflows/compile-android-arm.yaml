@@ -37,4 +37,4 @@ jobs:
           prerelease: false
           title: "Development Build"
           files: |
-            example/galaxeus_ai_flutter/galaxeus_ai_flutter/build/app/outputs/apk/release/*.apk
+            example/galaxeus_ai_flutter/build/app/outputs/apk/release/*.apk
