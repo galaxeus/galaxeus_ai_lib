@@ -22,7 +22,7 @@ void main(List<String> args) async {
         //   audioInput: File("../../native_lib/samples/audio.wav"),
         //   audioOutput: File("../../native_lib/samples/output_res.wav"),
         // ),
-        audio: File("../../native_lib/samples/output_res.wav"),
+        audio: File("../../native_lib/samples/output_id.wav"),
         model: File("../../native_lib/models/ggml-model-whisper-small.bin"),
       ),
     );
