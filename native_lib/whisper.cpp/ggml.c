@@ -15,10 +15,39 @@
 #include <stdio.h>
 
 #if defined _MSC_VER
-#include "msvc_thread_atomic.h"
+#include <Windows.h>
+
+typedef volatile LONG atomic_int;
+typedef atomic_int atomic_bool;
+
+static void atomic_store(atomic_int* ptr, LONG val) {
+    InterlockedExchange(ptr, val);
+}
+static LONG atomic_load(atomic_int* ptr) {
+    return InterlockedCompareExchange(ptr, 0, 0);
+}
+static LONG atomic_fetch_add(atomic_int* ptr, LONG inc) {
+    return InterlockedExchangeAdd(ptr, inc);
+}
+static LONG atomic_fetch_sub(atomic_int* ptr, LONG dec) {
+    return atomic_fetch_add(ptr, -(dec));
+}
+
+typedef HANDLE pthread_t;
+
+typedef DWORD thread_ret_t;
+static int pthread_create(pthread_t* out, void* unused, thread_ret_t(*func)(void*), void* arg) {
+    out = CreateThread(NULL, 0, func, arg, 0, NULL);
+    return out != NULL;
+}
+
+static int pthread_join(pthread_t thread, void* unused) {
+    return (int) WaitForSingleObject(thread, INFINITE);
+}
 #else
 #include <pthread.h>
 #include <stdatomic.h>
+
 typedef void* thread_ret_t;
 #endif
 
@@ -8000,6 +8029,56 @@ enum ggml_opt_result ggml_opt(
     }
 
     return result;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+int ggml_cpu_has_avx2(void) {
+#if defined(__AVX2__)
+    return 1;
+#else
+    return 0;
+#endif
+}
+
+int ggml_cpu_has_avx512(void) {
+#if defined(__AVX512F__)
+    return 1;
+#else
+    return 0;
+#endif
+}
+
+int ggml_cpu_has_neon(void) {
+#if defined(__ARM_NEON__)
+    return 1;
+#else
+    return 0;
+#endif
+}
+
+int ggml_cpu_has_fp16_va(void) {
+#if defined(__ARM_FEATURE_FP16_VECTOR_ARITHMETIC)
+    return 1;
+#else
+    return 0;
+#endif
+}
+
+int ggml_cpu_has_wasm_simd(void) {
+#if defined(__wasm_simd128__)
+    return 1;
+#else
+    return 0;
+#endif
+}
+
+int ggml_cpu_has_blas(void) {
+#if defined(GGML_USE_BLAS) || defined(GGML_USE_ACCELERATE)
+    return 1;
+#else
+    return 0;
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
