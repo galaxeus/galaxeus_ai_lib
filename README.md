@@ -1,4 +1,4 @@
-# galaxeus_ai
+# Galaxeus Artificial Intelligence
 
 all in one open source library artificial intelligence siap pakai untuk semua orang,
 
