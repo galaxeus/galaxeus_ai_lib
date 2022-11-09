@@ -9,6 +9,11 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     set(WHISPER_STANDALONE ON)
     include(cmake/GitVars.cmake)
     include(cmake/BuildTypes.cmake)
+
+    # configure project version
+    if (EXISTS "${CMAKE_SOURCE_DIR}/bindings/ios/Makefile-tmpl")
+        configure_file(${CMAKE_SOURCE_DIR}/bindings/ios/Makefile-tmpl ${CMAKE_SOURCE_DIR}/bindings/ios/Makefile @ONLY)
+    endif()
 else()
     set(WHISPER_STANDALONE OFF)
 endif()
@@ -41,8 +46,13 @@ option(WHISPER_BUILD_EXAMPLES          "whisper: build examples" ${WHISPER_STAND
 
 option(WHISPER_SUPPORT_SDL2            "whisper: support for libSDL2" OFF)
 
-option(WHISPER_PERF                    "whisper: enable perf timings"          OFF)
-option(WHISPER_NO_ACCELERATE           "whisper: disable Accelerate framework" OFF)
+if (APPLE)
+    option(WHISPER_NO_ACCELERATE       "whisper: disable Accelerate framework" OFF)
+else()
+    option(WHISPER_SUPPORT_OPENBLAS    "whisper: support for OpenBLAS" OFF)
+endif()
+
+option(WHISPER_PERF                    "whisper: enable perf timings" OFF)
 
 # sanitizers
 
@@ -86,6 +96,18 @@ if (APPLE AND NOT WHISPER_NO_ACCELERATE)
     endif()
 endif()
 
+if (WHISPER_SUPPORT_OPENBLAS)
+    find_library(OPENBLAS_LIB openblas)
+    if (OPENBLAS_LIB)
+        message(STATUS "OpenBLAS found")
+
+        set(WHISPER_EXTRA_LIBS  ${WHISPER_EXTRA_LIBS}  ${OPENBLAS_LIB})
+        set(WHISPER_EXTRA_FLAGS ${WHISPER_EXTRA_FLAGS} -DGGML_USE_OPENBLAS)
+    else()
+        message(WARNING "OpenBLAS not found")
+    endif()
+endif()
+
 # compiler flags
 
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -121,7 +143,8 @@ if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "arm" OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES
 else()
     message(STATUS "x86 detected")
     if (MSVC)
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /arch:AVX2 /D_CRT_SECURE_NO_WARNINGS=1")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:AVX2")
+        set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /arch:AVX2")
     else()
         if (EMSCRIPTEN)
             # we require support for WASM SIMD 128-bit
@@ -131,6 +154,10 @@ else()
             set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mavx -mavx2 -mfma -mf16c")
         endif()
     endif()
+endif()
+
+if (WHISPER_PERF)
+    set(WHISPER_EXTRA_FLAGS ${WHISPER_EXTRA_FLAGS} -DGGML_PERF)
 endif()
 
 #
@@ -148,7 +175,13 @@ target_include_directories(${TARGET} PUBLIC
     .
     )
 
-target_link_libraries(${TARGET} PRIVATE m ${WHISPER_EXTRA_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+if (MSVC)
+    target_link_libraries(${TARGET} PRIVATE ${WHISPER_EXTRA_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+
+    set(WHISPER_EXTRA_FLAGS ${WHISPER_EXTRA_FLAGS} -D_CRT_SECURE_NO_WARNINGS)
+else()
+    target_link_libraries(${TARGET} PRIVATE m ${WHISPER_EXTRA_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+endif()
 
 if (BUILD_SHARED_LIBS)
     target_link_libraries(${TARGET} PUBLIC
